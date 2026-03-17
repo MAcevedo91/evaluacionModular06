@@ -1,0 +1,21 @@
+{
+  "name": "evaluacionmodular06",
+  "version": "1.0.0",
+  "description": "Sistema CRUD para gestionar películas utilizando Express.js",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ./src/main.js",
+    "dev": "nodemon ./src/main.js"
+  },
+  "keywords": [],
+  "author": "Marcelo Acevedo",
+  "license": "ISC",
+  "type": "module",
+  "dependencies": {
+    "express": "^5.2.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14"
+  }
+}

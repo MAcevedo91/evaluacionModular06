@@ -1,0 +1,37 @@
+[
+    {
+        "id": 1,
+        "title": "Persona",
+        "director": "Ingmar Bergman",
+        "releaseYear": 1966,
+        "genre": "Drama psicológico"
+    },
+    {
+        "id": 2,
+        "title": "Aguirre, la ira de Dios",
+        "director": "Werner Herzog",
+        "releaseYear": 1972,
+        "genre": "Aventura / Drama"
+    },
+    {
+        "id": 3,
+        "title": "Stalker",
+        "director": "Andrei Tarkovsky",
+        "releaseYear": 1979,
+        "genre": "Ciencia ficción / Drama"
+    },
+    {
+        "id": 4,
+        "title": "El espejo",
+        "director": "Andrei Tarkovsky",
+        "releaseYear": 1975,
+        "genre": "Drama experimental"
+    },
+    {
+        "id": 5,
+        "title": "Fitzcarraldo",
+        "director": "Werner Herzog",
+        "releaseYear": 1982,
+        "genre": "Aventura / Drama"
+    }
+]
