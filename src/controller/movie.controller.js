@@ -53,4 +53,17 @@ export class MovieController {
             next(error);
         }
     }
+
+    static async deleteMovie(req, res, next) {
+        try {
+            await MovieService.deleteMovie(req.params.id);
+
+            res.status(200).json({
+                massage: "Película eliminada correctamente",
+                statusCode: 200,
+            });
+        } catch (error) {
+            next(error);
+        }
+    }
 }

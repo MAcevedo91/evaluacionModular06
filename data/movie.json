@@ -1,12 +1,5 @@
 [
   {
-    "id": "ab9795bf-09f2-476f-ac15-19bb2f7738d3",
-    "title": "Fanny & Alexander",
-    "director": "Ingmar Bergman",
-    "releaseYear": "1975",
-    "genre": "Drama"
-  },
-  {
     "id": "ff27dc8e-b4f0-434d-800b-d1ab0fc6747b",
     "title": "Aguirre la ira de Dios",
     "director": "Werner Herzog",
@@ -19,5 +12,26 @@
     "director": "Andrei Tarkovsky",
     "releaseYear": "1979",
     "genre": "Ciencia ficción Drama"
+  },
+  {
+    "id": "5a8c19a0-cf25-4d38-9a39-ed81278272e6",
+    "title": "El espejo",
+    "director": "Andrei Tarkovsky",
+    "releaseYear": "1975",
+    "genre": "Drama experimental"
+  },
+  {
+    "id": "a0ddd038-dc38-4591-855d-9dd6d9a6872e",
+    "title": "Fitzcarraldo",
+    "director": "Werner Herzog",
+    "releaseYear": "1982",
+    "genre": "Aventura Drama"
+  },
+  {
+    "id": "105281cd-1232-4c4c-b880-86647d4d45e9",
+    "title": "Persona",
+    "director": "Ingmar Bergman",
+    "releaseYear": "1966",
+    "genre": "Drama psicológico"
   }
 ]

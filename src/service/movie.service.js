@@ -83,4 +83,27 @@ export class MovieService {
             throw new ComposerError('Error al actualizar la película',`${error.message}`);
         }
     }
+
+    static async deleteMovie(id) {
+        try {
+            const movies = await FileUtils.readFile(this.#Pathfile);
+            const indexMovie = movies.findIndex(
+                (movie) => movie.id === id,
+            );
+            
+            if (indexMovie === -1)
+                throw new NotFoundError(
+                    "Movie not found", 
+                    `The movie id ${id} doesn'exist`
+            )
+
+            movies.splice(indexMovie, 1);
+
+            await FileUtils.writeFile(this.#Pathfile, movies);
+
+        } catch (error) {
+            console.log("Error al eliminarla película:", error.message);
+            throw new ComposerError('Error al eliminar la película',`${error.message}`);
+        }
+    }
 }
