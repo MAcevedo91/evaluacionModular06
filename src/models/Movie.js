@@ -1,3 +1,7 @@
+import  { Validate } from  '../utils/validator.utils.js';
+import { MovieError } from '../utils/errors.util';
+
+
 export class Movie {
     #id;
     #title;
@@ -9,10 +13,10 @@ export class Movie {
     // Método constructor para inicializar las propiedades del objeto Movie
     constructor(id, title, director, releaseYear, genre) {
         this.#id = id;
-        this.#title = title;
-        this.#director = director;
-        this.#releaseYear = releaseYear;
-        this.#genre = genre;
+        this.#title = Validate.validateTitle(title, 'title');
+        this.#director = Validate.validateTitle(director, 'director');
+        this.#releaseYear = Validate.validateReleaseYear(releaseYear, 'releaseYear');
+        this.#genre = Validate.validateTitle(genre, 'genre');
     }
     
     // Getters
@@ -38,19 +42,19 @@ export class Movie {
 
     // Setters
     set title(newTitle) {
-        this.#title = newTitle;
+        this.#title = Validate.validateTitle(newTitle, 'title');
     }
 
     set director(newDirector) {
-        this.#director = newDirector;
+        this.#director = Validate.validateTitle(newDirector, 'director');
     }
 
     set releaseYear(newReleaseYear) {
-        this.#releaseYear = newReleaseYear;
+        this.#releaseYear = Validate.validateReleaseYear(newReleaseYear, 'releaseYear');
     }
 
     set genre(newGenre) {
-        this.#genre = newGenre;
+        this.#genre = Validate.validateTitle(newGenre, 'genre');
     }
     
     // Método toJSON para convertir el objeto Movie a un formato JSON
@@ -76,7 +80,7 @@ export class Movie {
             );
         } catch (error) {
             console.log("Error creating movie:", error);
-            throw new Error("Invalid data for creating a movie");
+            throw new MovieError("Invalid data for creating a movie", `Error: ${error.message}`);
         }
     }
 

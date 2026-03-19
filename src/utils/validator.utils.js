@@ -1,4 +1,4 @@
-
+import { validatorError } from './errors.utils.js';
 
 const  REGEX_PATRON = {
     title: /^[a-zA-ZáéíóúÁÉÍÓÚñÑäëïöüÄËÏÖÜ\s]+$/,
@@ -14,11 +14,11 @@ export class Validate {
             
     }
 
-    static validateReleaseYear(releaseYear, fielName) {
-        if (!date.trim() || typeof date !== 'string') throw new validatorError(`El campo ${fielName} es obligatorio y debe ser una cadena de texto.`);
+    static validateReleaseYear(releaseYear, fieldName) {
+        if (!releaseYear.trim() || typeof releaseYear !== 'string') throw new validatorError(`El campo ${fieldName} es obligatorio y debe ser una cadena de texto.`);
 
-        if (!REGEX_PATRON.date.test(date.trim())) throw new validatorError(`El campo ${fielName} debe ser un año válido de 4 dígitos.`);
+        if (!REGEX_PATRON.date.test(releaseYear.trim())) throw new validatorError(`El campo ${fieldName} debe ser un año válido de 4 dígitos.`);
 
-        return date.trim();
+        return releaseYear.trim();
     }
 }
