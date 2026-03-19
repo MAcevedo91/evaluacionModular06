@@ -27,4 +27,17 @@ export class MovieController {
             next(error);
         }
     }
+
+    static async getById(req, res, next) {
+        try {
+            const data = await MovieService.getById(req.params.id);
+            res.status(200).json({
+                massage: "Archivo leído con éxito",
+                statusCode:200,
+                data,
+            });
+        } catch (error) {
+            next(error);
+        }
+    }
 }

@@ -38,4 +38,24 @@ export class MovieService {
             throw new MovieError('Error al leer los datos de las películas', error.message);
         }
     }
+
+    static async getById(id) {
+        try {
+            const data = await FileUtils.readFile(this.#Pathfile);
+            const movieFound = data.find((movie) => {
+                return movie.id === id;
+            });
+
+            if (!movieFound)
+                throw new NotFoundError(
+                    "Movie not found", 
+                    `The movie id ${id} doesn'exist`
+                );
+
+            return movieFound;
+        } catch (error) {
+            throw new MovieError("Error al leer los datos de la película", error.massage);
+        }
+
+    }
 }
