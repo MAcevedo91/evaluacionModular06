@@ -1,0 +1,28 @@
+import { Movie } from '../models/Movie.js';
+import { MovieError, NotFoundError } from '../utils/errors.utils.js';
+import { FileUtils } from '../utils/file.utils.js';
+
+export class MovieService {
+
+    static #Pathfile = './data/movie.json';
+
+    static async createMovie(movie) {
+        try {
+            await FileUtils.pathEnsure(this.#Pathfile);
+            const movies = await FileUtils.readFile(this.#Pathfile);
+            const newMovie = Movie.create(movie);
+
+            if (!movies) {
+                const movieData = [newMovie.toJSON()];
+                await FileUtils.writeFile(this.#Pathfile, movieData);
+                return newMovie.toJSON();
+            }
+            movies.push(newMovie.toJSON());
+
+            await FileUtils.writeFile(this.#Pathfile, movies);
+            return newMovie.toJSON();
+        } catch (error) {
+            throw new MovieError('Error creating movie', error.massage);
+        }
+    }
+}

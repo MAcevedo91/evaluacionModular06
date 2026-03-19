@@ -1,5 +1,5 @@
 import  { Validate } from  '../utils/validator.utils.js';
-import { MovieError } from '../utils/errors.util';
+import { MovieError } from '../utils/errors.utils.js';
 
 
 export class Movie {
@@ -12,7 +12,7 @@ export class Movie {
 
     // Método constructor para inicializar las propiedades del objeto Movie
     constructor(id, title, director, releaseYear, genre) {
-        this.#id = id;
+        this.#id = id || crypto.randomUUID();
         this.#title = Validate.validateTitle(title, 'title');
         this.#director = Validate.validateTitle(director, 'director');
         this.#releaseYear = Validate.validateReleaseYear(releaseYear, 'releaseYear');

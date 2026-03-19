@@ -18,7 +18,7 @@ export class NotFoundError extends AppError {
     }
 }
 
-export class MovieError extends ApError {
+export class MovieError extends AppError {
     constructor(message, details, statusCode) {
         super(message || 'Error relacionado con la película', statusCode || 500, details);
     }

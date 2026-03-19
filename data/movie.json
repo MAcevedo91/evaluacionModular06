@@ -1,0 +1,23 @@
+[
+  {
+    "id": "ab9795bf-09f2-476f-ac15-19bb2f7738d3",
+    "title": "Fanny & Alexander",
+    "director": "Ingmar Bergman",
+    "releaseYear": "1975",
+    "genre": "Drama psicológico"
+  },
+  {
+    "id": "ff27dc8e-b4f0-434d-800b-d1ab0fc6747b",
+    "title": "Aguirre la ira de Dios",
+    "director": "Werner Herzog",
+    "releaseYear": "1972",
+    "genre": "Aventura Drama"
+  },
+  {
+    "id": "8bc0ef00-db19-4181-83a0-4fea096d0015",
+    "title": "Stalker",
+    "director": "Andrei Tarkovsky",
+    "releaseYear": "1979",
+    "genre": "Ciencia ficción Drama"
+  }
+]
