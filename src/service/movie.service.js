@@ -58,4 +58,29 @@ export class MovieService {
         }
 
     }
+
+    static async updateMovie(id, newMovie) {
+        try {
+            const previewMovie = await FileUtils.readFile(this.#Pathfile);
+            const indexMovie = previewMovie.findIndex(
+                (movie) => movie.id === id,
+            );
+
+            if (indexMovie === -1)
+                throw new NotFoundError(
+                    "Movie not found", 
+                    `The movie id ${id} doesn'exist`
+            )
+
+            const movieUpdated = Movie.create({ ...newMovie, id});
+
+            previewMovie[indexMovie] = movieUpdated.toJSON();
+
+            await FileUtils.writeFile(this.#Pathfile, previewMovie);
+            return movieUpdated.toJSON();
+        } catch (error) {
+            console.log("Error al actualizar la película:", error.message);
+            throw new ComposerError('Error al actualizar la película',`${error.message}`);
+        }
+    }
 }
