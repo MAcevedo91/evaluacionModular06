@@ -22,7 +22,8 @@ export class MovieService {
             await FileUtils.writeFile(this.#Pathfile, movies);
             return newMovie.toJSON();
         } catch (error) {
-            throw new MovieError('Error creating movie', error.massage);
+            console.log('Error creating movie:', error.message);
+            throw new MovieError('Error creating movie', error.message);
         }
     }
 
@@ -35,7 +36,8 @@ export class MovieService {
             });
             return movies;
         } catch (error) {
-            throw new MovieError('Error al leer los datos de las películas', error.message);
+            console.log('Error reading movies data:', error.message);
+            throw new MovieError('Error reading movies data', error.message);
         }
     }
 
@@ -49,12 +51,14 @@ export class MovieService {
             if (!movieFound)
                 throw new NotFoundError(
                     "Movie not found", 
-                    `The movie id ${id} doesn'exist`
+                    `The movie id ${id} doesn't exist`
                 );
 
             return movieFound;
         } catch (error) {
-            throw new MovieError("Error al leer los datos de la película", error.massage);
+            if (error instanceof NotFoundError) throw error;
+            console.log('Error reading movie data:', error.message);
+            throw new MovieError('Error reading movie data', error.message);
         }
 
     }
@@ -69,7 +73,7 @@ export class MovieService {
             if (indexMovie === -1)
                 throw new NotFoundError(
                     "Movie not found", 
-                    `The movie id ${id} doesn'exist`
+                    `The movie id ${id} doesn't exist`
             )
 
             const movieUpdated = Movie.create({ ...newMovie, id});
@@ -79,8 +83,9 @@ export class MovieService {
             await FileUtils.writeFile(this.#Pathfile, previewMovie);
             return movieUpdated.toJSON();
         } catch (error) {
-            console.log("Error al actualizar la película:", error.message);
-            throw new ComposerError('Error al actualizar la película',`${error.message}`);
+            if (error instanceof NotFoundError) throw error;
+            console.log('Error updating movie:', error.message);
+            throw new MovieError('Error updating movie', error.message);
         }
     }
 
@@ -94,7 +99,7 @@ export class MovieService {
             if (indexMovie === -1)
                 throw new NotFoundError(
                     "Movie not found", 
-                    `The movie id ${id} doesn'exist`
+                    `The movie id ${id} doesn't exist`
             )
 
             movies.splice(indexMovie, 1);
@@ -102,8 +107,9 @@ export class MovieService {
             await FileUtils.writeFile(this.#Pathfile, movies);
 
         } catch (error) {
-            console.log("Error al eliminarla película:", error.message);
-            throw new ComposerError('Error al eliminar la película',`${error.message}`);
+            if (error instanceof NotFoundError) throw error;
+            console.log('Error deleting movie:', error.message);
+            throw new MovieError('Error deleting movie', error.message);
         }
     }
 }
