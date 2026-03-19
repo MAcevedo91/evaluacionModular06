@@ -25,4 +25,17 @@ export class MovieService {
             throw new MovieError('Error creating movie', error.massage);
         }
     }
+
+    static async readData() {
+        try {
+            const moviesRaw = await FileUtils.readFile(this.#Pathfile);
+            const movies = moviesRaw.map((movie) => {
+                const movieInstance = Movie.create(movie);
+                return movieInstance.toJSON();
+            });
+            return movies;
+        } catch (error) {
+            throw new MovieError('Error al leer los datos de las películas', error.message);
+        }
+    }
 }

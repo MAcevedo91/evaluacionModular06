@@ -14,4 +14,17 @@ export class MovieController {
             next(error);
         }
     }
+
+    static async getAllData(req, res, next) {
+        try {
+            const data = await MovieService.readData();
+            res.status(200).json({
+                message: "Archivos leídos con éxito",
+                statusCode: 200,
+                data,
+            });
+        } catch (error) {
+            next(error);
+        }
+    }
 }
