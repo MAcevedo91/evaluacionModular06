@@ -41,7 +41,7 @@ export class MovieController {
         }
     }
 
-    static async udateMovie(req, res, next) {
+    static async updateMovie(req, res, next) {
         try {
             const data = await MovieService.updateMovie(req.params.id, req.body);
             res.status(200).json({
